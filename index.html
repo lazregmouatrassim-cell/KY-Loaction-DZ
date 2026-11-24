@@ -1,0 +1,1114 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mouattassim Location | Car Rental</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --red: #d71920;
+    --dark: #111111;
+    --gray: #f4f4f4;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background: var(--gray);
+    color: var(--dark);
+    transition: background .3s, color .3s;
+}
+
+header {
+    background: var(--dark);
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.logo span {
+    color: var(--red);
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: var(--red);
+}
+
+/* HEADER CONTROLS */
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-controls button {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 1px solid var(--red);
+    border-radius: 8px;
+    background: #111;
+    color: var(--red);
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.header-controls button:hover {
+    background: var(--red);
+    color: white;
+    transform: scale(1.05);
+}
+
+.header-controls select {
+    min-width: 145px;
+    height: 42px;
+    padding: 8px 12px;
+    border: 1px solid var(--red);
+    border-radius: 8px;
+    background: #111;
+    color: white;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    transition: .3s;
+}
+
+.header-controls select:hover {
+    border-color: white;
+}
+
+.header-controls select option {
+    background: #111;
+    color: white;
+}
+
+/* HERO BACKGROUND IMAGE */
+.hero {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 110px 20px;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    background-image: url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1920&q=85");
+    background-size: cover;
+    background-position: center 55%;
+    background-repeat: no-repeat;
+    filter: blur(2px);
+    transform: scale(1.03);
+    z-index: -2;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(0,0,0,.78),
+        rgba(0,0,0,.45),
+        rgba(0,0,0,.78)
+    );
+    z-index: -1;
+}
+
+.hero h1,
+.hero p,
+.hero a {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: clamp(30px, 5vw, 48px);
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: var(--red);
+}
+
+.hero p {
+    color: #eee;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.hero a {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    padding: 14px 35px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: .3s;
+}
+
+.hero a:hover {
+    background: white;
+    color: var(--red);
+}
+
+/* CARS SECTION */
+.cars-section {
+    padding: 60px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.section-title h2 span {
+    color: var(--red);
+}
+
+.section-title p {
+    color: #777;
+}
+
+.search-box {
+    max-width: 450px;
+    margin: 0 auto 35px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+}
+
+.search-box input:focus {
+    border-color: var(--red);
+}
+
+.cars-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.car-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,.07);
+    transition: .3s;
+}
+
+.car-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,.12);
+}
+
+.main-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    background: #eee;
+}
+
+.thumbnails {
+    display: flex;
+    gap: 7px;
+    padding: 10px;
+}
+
+.thumbnails img {
+    width: 25%;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: .2s;
+}
+
+.thumbnails img:hover {
+    border-color: var(--red);
+}
+
+.car-info {
+    padding: 15px 18px 20px;
+}
+
+.car-info h3 {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.car-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.transmission {
+    background: #f1f1f1;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.price {
+    color: var(--red);
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.whatsapp-btn {
+    display: block;
+    text-align: center;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    padding: 11px;
+    border-radius: 6px;
+    font-weight: 700;
+    transition: .3s;
+}
+
+.whatsapp-btn:hover {
+    background: #1da851;
+}
+
+.no-results {
+    display: none;
+    text-align: center;
+    grid-column: 1 / -1;
+    padding: 30px;
+    color: #777;
+}
+
+/* FOOTER */
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+footer h3 {
+    margin-bottom: 8px;
+}
+
+footer span {
+    color: var(--red);
+}
+
+footer p {
+    color: #aaa;
+    font-size: 14px;
+}
+
+/* DARK MODE */
+body.dark-mode {
+    background: #121212;
+    color: #f5f5f5;
+}
+
+body.dark-mode .cars-section {
+    background: #121212;
+}
+
+body.dark-mode .car-card {
+    background: #1e1e1e;
+    color: white;
+}
+
+body.dark-mode .section-title p {
+    color: #bbb;
+}
+
+body.dark-mode .search-box input {
+    background: #222;
+    color: white;
+    border-color: #444;
+}
+
+body.dark-mode .transmission {
+    background: #333;
+    color: white;
+}
+
+body.dark-mode .no-results {
+    color: #bbb;
+}
+
+body.dark-mode .main-image {
+    background: #333;
+}
+
+/* RESPONSIVE */
+@media(max-width: 900px) {
+    .cars-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 600px) {
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .header-controls {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .cars-container {
+        grid-template-columns: 1fr;
+    }
+
+    .cars-section {
+        padding: 45px 5%;
+    }
+
+    .main-image {
+        height: 230px;
+    }
+
+    .hero {
+        padding: 90px 15px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Mouattassim <span>Location</span></div>
+
+    <nav>
+        <a href="#home" id="navHome">الرئيسية</a>
+        <a href="#cars" id="navCars">السيارات</a>
+        <a href="#contact" id="navContact">اتصل بنا</a>
+    </nav>
+
+    <div class="header-controls">
+        <button id="themeToggle" type="button" aria-label="Toggle dark mode">◐</button>
+
+        <select id="languageSelect" aria-label="Choose language">
+            <option value="ar">🇩🇿 العربية</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="en">🇬🇧 English</option>
+        </select>
+    </div>
+</header>
+
+<section class="hero" id="home">
+    <h1 id="heroTitle">اكتشف سيارتك مع <span>Mouattassim Location</span></h1>
+    <p id="heroText">أفضل السيارات لرحلات مريحة وتجربة كراء مميزة</p>
+    <a href="#cars" id="discoverBtn">اكتشف السيارات</a>
+</section>
+
+<section class="cars-section" id="cars">
+
+    <div class="section-title">
+        <h2 id="sectionTitle">سياراتنا <span>المتوفرة</span></h2>
+        <p id="sectionText">اختر السيارة المناسبة لك واحجز مباشرة عبر واتساب</p>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="ابحث عن سيارة...">
+    </div>
+
+    <div class="cars-container" id="carsContainer">
+
+        <!-- CAR 1 -->
+        <article class="car-card">
+            <img class="main-image" src="images/car1-1.jpg" alt="Mercedes C-Class">
+            <div class="thumbnails">
+                <img src="images/car1-1.jpg" alt="صورة 1">
+                <img src="images/car1-2.jpg" alt="صورة 2">
+                <img src="images/car1-3.jpg" alt="صورة 3">
+                <img src="images/car1-4.jpg" alt="صورة 4">
+            </div>
+            <div class="car-info">
+                <h3 class="car-name">Renault clio 5</h3>
+                <div class="car-details">
+                    <span class="transmission">Auto</span>
+                    <span class="price">12000 DA / يوم</span>
+                </div>
+                <a class="whatsapp-btn" href="#" target="_blank">احجز عبر واتساب</a>
+            </div>
+        </article>
+
+        <!-- CAR 2 -->
+        <article class="car-card">
+            <img class="main-image" src="images/car2-1.jpg" alt="Mercedes E-Class">
+            <div class="thumbnails">
+                <img src="images/car2-1.jpg" alt="صورة 1">
+                <img src="images/car2-2.jpg" alt="صورة 2">
+                <img src="images/car2-3.jpg" alt="صورة 3">
+                <img src="images/car2-4.jpg" alt="صورة 4">
+            </div>
+            <div class="car-info">
+                <h3 class="car-name">VW T-ROC</h3>
+                <div class="car-details">
+                    <span class="transmission">Auto</span>
+                    <span class="price">9000 DA / يوم</span>
+                </div>
+                <a class="whatsapp-btn" href="#" target="_blank">احجز عبر واتساب</a>
+            </div>
+        </article>
+
+        <!-- CAR 3 -->
+        <article class="car-card">
+            <img class="main-image" src="images/car3-1.jpg" alt="Mercedes G-Class">
+            <div class="thumbnails">
+                <img src="images/car3-1.jpg" alt="صورة 1">
+                <img src="images/car3-2.jpg" alt="صورة 2">
+                <img src="images/car3-3.jpg" alt="صورة 3">
+                <img src="images/car3-4.jpg" alt="صورة 4">
+            </div>
+            <div class="car-info">
+                <h3 class="car-name">VW POLO</h3>
+                <div class="car-details">
+                    <span class="transmission">Auto</span>
+                    <span class="price">8500 DA / يوم</span>
+                </div>
+                <a class="whatsapp-btn" href="#" target="_blank">احجز عبر واتساب</a>
+            </div>
+        </article>
+
+        <!-- CAR 4 -->
+        <article class="car-card">
+            <img class="main-image" src="images/car4-1.jpg" alt="BMW Série 3">
+            <div class="thumbnails">
+                <img src="images/car4-1.jpg" alt="صورة 1">
+                <img src="images/car4-2.jpg" alt="صورة 2">
+                <img src="images/car4-3.jpg" alt="صورة 3">
+                <img src="images/car4-4.jpg" alt="صورة 4">
+            </div>
+            <div class="car-info">
+                <h3 class="car-name">VW GOLF 8</h3>
+                <div class="car-details">
+                    <span class="transmission">Auto</span>
+                    <span class="price">14000 DA / يوم</span>
+                </div>
+                <a class="whatsapp-btn" href="#" target="_blank">احجز عبر واتساب</a>
+            </div>
+        </article>
+
+        <!-- CAR 5 -->
+        <article class="car-card">
+            <img class="main-image" src="images/car5-1.jpg" alt="BMW Série 5">
+            <div class="thumbnails">
+                <img src="images/car5-1.jpg" alt="صورة 1">
+                <img src="images/car5-2.jpg" alt="صورة 2">
+                <img src="images/car5-3.jpg" alt="صورة 3">
+                <img src="images/car5-4.jpg" alt="صورة 4">
+            </div>
+            <div class="car-info">
+                <h3 class="car-name">Mercedes GLE</h3>
+                <div class="car-details">
+                    <span class="transmission">Auto</span>
+                    <span class="price">17000 DA / يوم</span>
+                </div>
+                <a class="whatsapp-btn" href="#" target="_blank">احجز عبر واتساب</a>
+            </div>
+        </article>
+
+        <!-- CAR 6 -->
+        <article class="car-card">
+            <img class="main-image" src="images/car6-1.jpg" alt="BMW X5">
+            <div class="thumbnails">
+                <img src="images/car6-1.jpg" alt="صورة 1">
+                <img src="images/car6-2.jpg" alt="صورة 2">
+                <img src="images/car6-3.jpg" alt="صورة 3">
+                <img src="images/car6-4.jpg" alt="صورة 4">
+            </div>
+            <div class="car-info">
+                <h3 class="car-name">KIA Picanto</h3>
+                <div class="car-details">
+                    <span class="transmission">Auto</span>
+                    <span class="price">7000 DA / يوم</span>
+                </div>
+                <a class="whatsapp-btn" href="#" target="_blank">احجز عبر واتساب</a>
+            </div>
+        </article>
+
+        <!-- CAR 7 -->
+        <article class="car-card">
+            <img class="main-image" src="images/car7-1.jpg" alt="Audi A3">
+            <div class="thumbnails">
+                <img src="images/car7-1.jpg" alt="صورة 1">
+                <img src="images/car7-2.jpg" alt="صورة 2">
+                <img src="images/car7-3.jpg" alt="صورة 3">
+                <img src="images/car7-4.jpg" alt="صورة 4">
+            </div>
+            <div class="car-info">
+                <h3 class="car-name">GELLY COOLRAY</h3>
+                <div class="car-details">
+                    <span class="transmission">Auto</span>
+                    <span class="price">11000 DA / يوم</span>
+                </div>
+                <a class="whatsapp-btn" href="#" target="_blank">احجز عبر واتساب</a>
+            </div>
+        </article>
+
+        <!-- CAR 8 -->
+        <article class="car-card">
+            <img class="main-image" src="images/car8-1.jpg" alt="Audi A4">
+            <div class="thumbnails">
+                <img src="images/car8-1.jpg" alt="صورة 1">
+                <img src="images/car8-2.jpg" alt="صورة 2">
+                <img src="images/car8-3.jpg" alt="صورة 3">
+                <img src="images/car8-4.jpg" alt="صورة 4">
+            </div>
+            <div class="car-info">
+                <h3 class="car-name">FIAT TIPO</h3>
+                <div class="car-details">
+                    <span class="transmission">Auto</span>
+                    <span class="price">10000 DA / يوم</span>
+                </div>
+                <a class="whatsapp-btn" href="#" target="_blank">احجز عبر واتساب</a>
+            </div>
+        </article>
+
+        <!-- CAR 9 -->
+        <article class="car-card">
+            <img class="main-image" src="images/car9-1.jpg" alt="Audi Q5">
+            <div class="thumbnails">
+                <img src="images/car9-1.jpg" alt="صورة 1">
+                <img src="images/car9-2.jpg" alt="صورة 2">
+                <img src="images/car9-3.jpg" alt="صورة 3">
+                <img src="images/car9-4.jpg" alt="صورة 4">
+            </div>
+            <div class="car-info">
+                <h3 class="car-name">Audi Q5</h3>
+                <div class="car-details">
+                    <span class="transmission">Auto</span>
+                    <span class="price">18000 DA / يوم</span>
+                </div>
+                <a class="whatsapp-btn" href="#" target="_blank">احجز عبر واتساب</a>
+            </div>
+        </article>
+
+        <!-- CAR 10 -->
+        <article class="car-card">
+            <img class="main-image" src="images/car10-1.jpg" alt="Volkswagen Golf 8">
+            <div class="thumbnails">
+                <img src="images/car10-1.jpg" alt="صورة 1">
+                <img src="images/car10-2.jpg" alt="صورة 2">
+                <img src="images/car10-3.jpg" alt="صورة 3">
+                <img src="images/car10-4.jpg" alt="صورة 4">
+            </div>
+            <div class="car-info">
+                <h3 class="car-name">Hyundai ACCENT</h3>
+                <div class="car-details">
+                    <span class="transmission">Auto</span>
+                    <span class="price">13000 DA / يوم</span>
+                </div>
+                <a class="whatsapp-btn" href="#" target="_blank">احجز عبر واتساب</a>
+            </div>
+        </article>
+
+        <!-- CAR 11 -->
+        <article class="car-card">
+            <img class="main-image" src="images/car11-1.jpg" alt="Volkswagen Polo">
+            <div class="thumbnails">
+                <img src="images/car11-1.jpg" alt="صورة 1">
+                <img src="images/car11-2.jpg" alt="صورة 2">
+                <img src="images/car11-3.jpg" alt="صورة 3">
+                <img src="images/car11-4.jpg" alt="صورة 4">
+            </div>
+            <div class="car-info">
+                <h3 class="car-name">DACIA STEPWAY</h3>
+                <div class="car-details">
+                    <span class="transmission">Manual</span>
+                    <span class="price">8000 DA / يوم</span>
+                </div>
+                <a class="whatsapp-btn" href="#" target="_blank">احجز عبر واتساب</a>
+            </div>
+        </article>
+
+        <!-- CAR 12 -->
+        <article class="car-card">
+            <img class="main-image" src="images/car12-1.jpg" alt="Hyundai Tucson">
+            <div class="thumbnails">
+                <img src="images/car12-1.jpg" alt="صورة 1">
+                <img src="images/car12-2.jpg" alt="صورة 2">
+                <img src="images/car12-3.jpg" alt="صورة 3">
+                <img src="images/car12-4.jpg" alt="صورة 4">
+            </div>
+            <div class="car-info">
+                <h3 class="car-name">AUDI S3</h3>
+                <div class="car-details">
+                    <span class="transmission">Auto</span>
+                    <span class="price">15000 DA / يوم</span>
+                </div>
+                <a class="whatsapp-btn" href="#" target="_blank">احجز عبر واتساب</a>
+            </div>
+        </article>
+
+        <!-- CAR 13 -->
+        <article class="car-card">
+            <img class="main-image" src="images/car13-1.jpg" alt="Hyundai i20">
+            <div class="thumbnails">
+                <img src="images/car13-1.jpg" alt="صورة 1">
+                <img src="images/car13-2.jpg" alt="صورة 2">
+                <img src="images/car13-3.jpg" alt="صورة 3">
+                <img src="images/car13-4.jpg" alt="صورة 4">
+            </div>
+            <div class="car-info">
+                <h3 class="car-name">Mercedes G-Class</h3>
+                <div class="car-details">
+                    <span class="transmission">Auto</span>
+                    <span class="price">75000 DA / يوم</span>
+                </div>
+                <a class="whatsapp-btn" href="#" target="_blank">احجز عبر واتساب</a>
+            </div>
+        </article>
+
+        <!-- CAR 14 -->
+        <article class="car-card">
+            <img class="main-image" src="images/car14-1.jpg" alt="Kia Sportage">
+            <div class="thumbnails">
+                <img src="images/car14-1.jpg" alt="صورة 1">
+                <img src="images/car14-2.jpg" alt="صورة 2">
+                <img src="images/car14-3.jpg" alt="صورة 3">
+                <img src="images/car14-4.jpg" alt="صورة 4">
+            </div>
+            <div class="car-info">
+                <h3 class="car-name">Hyundai i20</h3>
+                <div class="car-details">
+                    <span class="transmission">Manual</span>
+                    <span class="price">11000 DA / يوم</span>
+                </div>
+                <a class="whatsapp-btn" href="#" target="_blank">احجز عبر واتساب</a>
+            </div>
+        </article>
+
+        <!-- CAR 15 -->
+        <article class="car-card">
+            <img class="main-image" src="images/car15-1.jpg" alt="Toyota Corolla">
+            <div class="thumbnails">
+                <img src="images/car15-1.jpg" alt="صورة 1">
+                <img src="images/car15-2.jpg" alt="صورة 2">
+                <img src="images/car15-3.jpg" alt="صورة 3">
+                <img src="images/car15-4.jpg" alt="صورة 4">
+            </div>
+            <div class="car-info">
+                <h3 class="car-name">Hyundai TUCSON</h3>
+                <div class="car-details">
+                    <span class="transmission">Auto</span>
+                    <span class="price">12000 DA / يوم</span>
+                </div>
+                <a class="whatsapp-btn" href="#" target="_blank">احجز عبر واتساب</a>
+            </div>
+        </article>
+
+        <!-- CAR 16 -->
+        <article class="car-card">
+            <img class="main-image" src="images/car16-1.jpg" alt="Toyota Yaris">
+            <div class="thumbnails">
+                <img src="images/car16-1.jpg" alt="صورة 1">
+                <img src="images/car16-2.jpg" alt="صورة 2">
+                <img src="images/car16-3.jpg" alt="صورة 3">
+                <img src="images/car16-4.jpg" alt="صورة 4">
+            </div>
+            <div class="car-info">
+                <h3 class="car-name">Toyota Yaris</h3>
+                <div class="car-details">
+                    <span class="transmission">Manual</span>
+                    <span class="price">8000 DA / يوم</span>
+                </div>
+                <a class="whatsapp-btn" href="#" target="_blank">احجز عبر واتساب</a>
+            </div>
+        </article>
+
+        <!-- CAR 17 -->
+        <article class="car-card">
+            <img class="main-image" src="images/car17-1.jpg" alt="Peugeot 208">
+            <div class="thumbnails">
+                <img src="images/car17-1.jpg" alt="صورة 1">
+                <img src="images/car17-2.jpg" alt="صورة 2">
+                <img src="images/car17-3.jpg" alt="صورة 3">
+                <img src="images/car17-4.jpg" alt="صورة 4">
+            </div>
+            <div class="car-info">
+                <h3 class="car-name">Peugeot 208</h3>
+                <div class="car-details">
+                    <span class="transmission">Manual</span>
+                    <span class="price">8500 DA / يوم</span>
+                </div>
+                <a class="whatsapp-btn" href="#" target="_blank">احجز عبر واتساب</a>
+            </div>
+        </article>
+
+        <!-- CAR 18 -->
+        <article class="car-card">
+            <img class="main-image" src="images/car18-1.jpg" alt="Peugeot 3008">
+            <div class="thumbnails">
+                <img src="images/car18-1.jpg" alt="صورة 1">
+                <img src="images/car18-2.jpg" alt="صورة 2">
+                <img src="images/car18-3.jpg" alt="صورة 3">
+                <img src="images/car18-4.jpg" alt="صورة 4">
+            </div>
+            <div class="car-info">
+                <h3 class="car-name">Peugeot 3008</h3>
+                <div class="car-details">
+                    <span class="transmission">Auto</span>
+                    <span class="price">10000 DA / يوم</span>
+                </div>
+                <a class="whatsapp-btn" href="#" target="_blank">احجز عبر واتساب</a>
+            </div>
+        </article>
+
+        <!-- CAR 19 -->
+        <article class="car-card">
+            <img class="main-image" src="images/car19-1.jpg" alt="Renault Clio">
+            <div class="thumbnails">
+                <img src="images/car19-1.jpg" alt="صورة 1">
+                <img src="images/car19-2.jpg" alt="صورة 2">
+                <img src="images/car19-3.jpg" alt="صورة 3">
+                <img src="images/car19-4.jpg" alt="صورة 4">
+            </div>
+            <div class="car-info">
+                <h3 class="car-name">PORCHE Macan</h3>
+                <div class="car-details">
+                    <span class="transmission">Manual</span>
+                    <span class="price">75000 DA / يوم</span>
+                </div>
+                <a class="whatsapp-btn" href="#" target="_blank">احجز عبر واتساب</a>
+            </div>
+        </article>
+
+        <!-- CAR 20 -->
+        <article class="car-card">
+            <img class="main-image" src="images/car20-1.jpg" alt="Dacia Duster">
+            <div class="thumbnails">
+                <img src="images/car20-1.jpg" alt="صورة 1">
+                <img src="images/car20-2.jpg" alt="صورة 2">
+                <img src="images/car20-3.jpg" alt="صورة 3">
+                <img src="images/car20-4.jpg" alt="صورة 4">
+            </div>
+            <div class="car-info">
+                <h3 class="car-name">LIVAN X3</h3>
+                <div class="car-details">
+                    <span class="transmission">Manual</span>
+                    <span class="price">12000 DA / يوم</span>
+                </div>
+                <a class="whatsapp-btn" href="#" target="_blank">احجز عبر واتساب</a>
+            </div>
+        </article>
+
+        <p class="no-results" id="noResults">
+            لم يتم العثور على أي سيارة.
+        </p>
+
+    </div>
+</section>
+
+<footer id="contact">
+    <h3>Mouattassim <span>Location</span></h3>
+    <p id="footerText">للحجز والاستفسار تواصل معنا عبر واتساب</p>
+    <p>© 2026 Mouattassim Location. All Rights Reserved.</p>
+</footer>
+
+<script>
+
+// WhatsApp number
+const whatsappNumber = "213553613038";
+
+// Elements
+const searchInput = document.getElementById("searchInput");
+const cards = document.querySelectorAll(".car-card");
+const noResults = document.getElementById("noResults");
+const themeToggle = document.getElementById("themeToggle");
+const languageSelect = document.getElementById("languageSelect");
+
+// Translations
+const translations = {
+    ar: {
+        direction: "rtl",
+        home: "الرئيسية",
+        cars: "السيارات",
+        contact: "اتصل بنا",
+        heroTitle: 'اكتشف سيارتك مع <span>Mouattassim Location</span>',
+        heroText: "أفضل السيارات لرحلات مريحة وتجربة كراء مميزة",
+        discover: "اكتشف السيارات",
+        sectionTitle: 'سياراتنا <span>المتوفرة</span>',
+        sectionText: "اختر السيارة المناسبة لك واحجز مباشرة عبر واتساب",
+        search: "ابحث عن سيارة...",
+        book: "احجز عبر واتساب",
+        noResults: "لم يتم العثور على أي سيارة.",
+        footerText: "للحجز والاستفسار تواصل معنا عبر واتساب",
+        day: "يوم",
+        message: "السلام عليكم، أريد الاستفسار عن كراء هذه السيارة:",
+        car: "اسم السيارة",
+        price: "السعر",
+        available: "هل السيارة متوفرة؟"
+    },
+
+    fr: {
+        direction: "ltr",
+        home: "Accueil",
+        cars: "Voitures",
+        contact: "Contact",
+        heroTitle: 'Découvrez votre voiture avec <span>Mouattassim Location</span>',
+        heroText: "Les meilleures voitures pour des voyages confortables",
+        discover: "Découvrir les voitures",
+        sectionTitle: 'Nos voitures <span>disponibles</span>',
+        sectionText: "Choisissez votre voiture et réservez directement sur WhatsApp",
+        search: "Rechercher une voiture...",
+        book: "Réserver sur WhatsApp",
+        noResults: "Aucune voiture trouvée.",
+        footerText: "Pour réserver ou demander des informations, contactez-nous sur WhatsApp",
+        day: "jour",
+        message: "Bonjour, je souhaite me renseigner sur la location de cette voiture :",
+        car: "Nom de la voiture",
+        price: "Prix",
+        available: "La voiture est-elle disponible ?"
+    },
+
+    en: {
+        direction: "ltr",
+        home: "Home",
+        cars: "Cars",
+        contact: "Contact us",
+        heroTitle: 'Discover your car with <span>Mouattassim Location</span>',
+        heroText: "The best cars for comfortable trips and a great rental experience",
+        discover: "Discover cars",
+        sectionTitle: 'Our <span>Available</span> Cars',
+        sectionText: "Choose your car and book directly through WhatsApp",
+        search: "Search for a car...",
+        book: "Book via WhatsApp",
+        noResults: "No cars found.",
+        footerText: "For bookings and inquiries, contact us via WhatsApp",
+        day: "day",
+        message: "Hello, I would like to inquire about renting this car:",
+        car: "Car name",
+        price: "Price",
+        available: "Is the car available?"
+    }
+};
+
+// Current language
+let currentLanguage = localStorage.getItem("siteLanguage") || "ar";
+
+// Change language
+function changeLanguage(language) {
+
+    const t = translations[language];
+
+    if (!t) return;
+
+    currentLanguage = language;
+
+    localStorage.setItem("siteLanguage", language);
+
+    document.documentElement.lang = language;
+    document.documentElement.dir = t.direction;
+
+    document.getElementById("navHome").textContent = t.home;
+    document.getElementById("navCars").textContent = t.cars;
+    document.getElementById("navContact").textContent = t.contact;
+
+    document.getElementById("heroTitle").innerHTML = t.heroTitle;
+    document.getElementById("heroText").textContent = t.heroText;
+    document.getElementById("discoverBtn").textContent = t.discover;
+
+    document.getElementById("sectionTitle").innerHTML = t.sectionTitle;
+    document.getElementById("sectionText").textContent = t.sectionText;
+
+    searchInput.placeholder = t.search;
+
+    document.getElementById("footerText").textContent = t.footerText;
+
+    noResults.textContent = t.noResults;
+
+    cards.forEach(card => {
+
+        const price = card.querySelector(".price");
+        const button = card.querySelector(".whatsapp-btn");
+
+        const originalPrice = price.dataset.originalPrice ||
+            price.textContent.trim();
+
+        price.dataset.originalPrice = originalPrice;
+
+        const numericPrice = originalPrice.split("/")[0].trim();
+
+        price.textContent = `${numericPrice} / ${t.day}`;
+
+        button.textContent = t.book;
+    });
+
+    updateWhatsAppLinks();
+
+    languageSelect.value = language;
+
+    searchInput.dispatchEvent(new Event("input"));
+}
+
+// WhatsApp links
+function updateWhatsAppLinks() {
+
+    const t = translations[currentLanguage];
+
+    cards.forEach(card => {
+
+        const name = card.querySelector(".car-name").textContent.trim();
+        const price = card.querySelector(".price").textContent.trim();
+        const button = card.querySelector(".whatsapp-btn");
+
+        const message =
+`${t.message}
+
+${t.car}: ${name}
+${t.price}: ${price}
+
+${t.available}`;
+
+        button.href =
+            `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+        button.target = "_blank";
+    });
+}
+
+// Change images by clicking thumbnails
+cards.forEach(card => {
+
+    const mainImage = card.querySelector(".main-image");
+    const thumbnails = card.querySelectorAll(".thumbnails img");
+
+    thumbnails.forEach(thumbnail => {
+
+        thumbnail.addEventListener("click", () => {
+            mainImage.src = thumbnail.src;
+        });
+
+    });
+
+});
+
+// Search cars
+searchInput.addEventListener("input", () => {
+
+    const searchValue = searchInput.value.toLowerCase().trim();
+
+    let found = 0;
+
+    cards.forEach(card => {
+
+        const carName = card.querySelector(".car-name").textContent.toLowerCase();
+
+        if (carName.includes(searchValue)) {
+            card.style.display = "block";
+            found++;
+        } else {
+            card.style.display = "none";
+        }
+
+    });
+
+    noResults.style.display = found === 0 ? "block" : "none";
+
+});
+
+// Language selector
+languageSelect.addEventListener("change", () => {
+    changeLanguage(languageSelect.value);
+});
+
+// Dark mode
+function setTheme(isDark) {
+
+    document.body.classList.toggle("dark-mode", isDark);
+
+    themeToggle.textContent = isDark ? "◑" : "◐";
+
+    localStorage.setItem("siteTheme", isDark ? "dark" : "light");
+}
+
+themeToggle.addEventListener("click", () => {
+
+    const isDark = !document.body.classList.contains("dark-mode");
+
+    setTheme(isDark);
+});
+
+// Load saved theme
+const savedTheme = localStorage.getItem("siteTheme");
+
+setTheme(savedTheme === "dark");
+
+// Load saved language
+changeLanguage(currentLanguage);
+
+</script>
+
+</body>
+</html>
